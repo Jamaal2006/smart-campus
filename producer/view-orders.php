@@ -111,7 +111,7 @@ if (isset($_GET['id'])) {
                 <?php if ($order['status'] !== 'cancelled' && $order['status'] !== 'delivered'): ?>
                     <div class="card" style="padding:var(--space-lg);">
                         <h2 style="font-size:1.1rem;margin-bottom:var(--space-md);">Update Order Status</h2>
-                        <form method="post" action="/producer/view-orders.php">
+                        <form method="post" action="/producer/view-orders.php?id=<?= (int)$order['order_id'] ?>">
                             <?= csrfField() ?>
                             <input type="hidden" name="order_id" value="<?= (int)$order['order_id'] ?>">
                             <div class="d-flex gap-md align-center flex-wrap">

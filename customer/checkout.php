@@ -64,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     $finalDelivery = $fulfillment === 'delivery' ? $deliveryFee : 0.0;
-    if ($discountAmt > 0 && $reward['discount_amount'] == 0) {
+    if (isset($reward) && $reward['discount_amount'] !== null && (float)$reward['discount_amount'] === 0.0) {
         // Free delivery reward
         $finalDelivery = 0.0;
     }

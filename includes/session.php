@@ -49,13 +49,4 @@ function requireRole(string $role): void
 function currentRole(): ?string
 {
     return $_SESSION['role'] ?? null;
-}// Session management functions
-
-session_start();
-
-function checkSession() {
-    if(!isset($_SESSION['user_id'])) {
-        header('Location: login.php');
-        exit();
-    }
 }
