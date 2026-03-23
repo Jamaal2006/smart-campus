@@ -1,0 +1,19 @@
+# Dependencies / packages
+vendor/phpmailer/
+node_modules/
+
+# Environment / secrets
+.env
+.env.*
+config/secrets.php
+
+# Build artifacts
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/

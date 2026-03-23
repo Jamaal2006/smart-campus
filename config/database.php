@@ -1,15 +1,22 @@
 <?php
-// Database connection configuration
+// Database connection configuration for Greenfield Local Hub (GLH)
 
-$host = 'localhost'; // or your database host
-$dbname = 'smart_campus';
-$username = 'your_username'; // replace with your database username
-$password = 'your_password'; // replace with your database password
+$host   = getenv('DB_HOST') ?: 'localhost';
+$dbname = getenv('DB_NAME') ?: 'glh';
+$dbuser = getenv('DB_USER') ?: 'glh_user';
+$dbpass = getenv('DB_PASS') ?: '';
 
 try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-    // set the PDO error mode to exception
+    $pdo = new PDO(
+        "mysql:host=$host;dbname=$dbname;charset=utf8mb4",
+        $dbuser,
+        $dbpass
+    );
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+    $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 } catch (PDOException $e) {
-    echo "Connection failed: " . $e->getMessage();
+    // Log error securely — never expose raw details to the browser
+    error_log('Database connection failed: ' . $e->getMessage());
+    die('Service temporarily unavailable. Please try again later.');
 }
