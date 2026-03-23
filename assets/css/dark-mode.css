@@ -1,5 +1,45 @@
-/* Dark mode styles */
-body {
-    background-color: #333;
-    color: #fff;
+/* Dark mode overrides — applied automatically when OS preference is dark */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --clr-bg:       #121a14;
+        --clr-bg-card:  #1e2d22;
+        --clr-text:     #e8f0e9;
+        --clr-text-muted: #9ab09d;
+        --clr-border:   #2e4434;
+        --clr-primary-lt: #1a3324;
+    }
+
+    .site-header { background: #1a2d1e; }
+    .primary-nav a { color: var(--clr-text); }
+    th { background: #1a3324; }
+    tr:hover td { background: #1c2e1f; }
+    input, textarea, select { background: #1e2d22; color: var(--clr-text); border-color: #3a5040; }
+    .card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.4); }
+    .order-summary { background: var(--clr-bg-card); }
+    .reward-card { background: var(--clr-bg-card); border-color: #2e4434; }
+    .reward-card.available { border-color: var(--clr-secondary); }
+    .feature-item { background: var(--clr-bg-card); }
 }
+
+/* Manual dark mode class (toggled by button) */
+body.dark-mode {
+    --clr-bg:       #121a14;
+    --clr-bg-card:  #1e2d22;
+    --clr-text:     #e8f0e9;
+    --clr-text-muted: #9ab09d;
+    --clr-border:   #2e4434;
+    --clr-primary-lt: #1a3324;
+    background-color: var(--clr-bg);
+    color: var(--clr-text);
+}
+body.dark-mode .site-header { background: #1a2d1e; }
+body.dark-mode .primary-nav a { color: var(--clr-text); }
+body.dark-mode th  { background: #1a3324; }
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select { background: #1e2d22; color: var(--clr-text); border-color: #3a5040; }
+body.dark-mode .card { background: var(--clr-bg-card); }
+body.dark-mode .order-summary { background: var(--clr-bg-card); }
+body.dark-mode .reward-card { background: var(--clr-bg-card); border-color: #2e4434; }
+body.dark-mode .feature-item { background: var(--clr-bg-card); }
+body.dark-mode .sidebar { background: var(--clr-bg-card); }
